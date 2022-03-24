@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">TestProject</string>
     <string name="dialogbutton">Отобразить диалог</string>
+    <string name="profile">Profile</string>
+    <string name="home">Home</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
 </resources>
