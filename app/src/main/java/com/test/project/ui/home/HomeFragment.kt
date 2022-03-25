@@ -10,8 +10,9 @@ import com.test.project.databinding.HomeFragmentBinding
 class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private val viewBinding: HomeFragmentBinding by viewBinding()
-
+    private val adapter: HomeListAdapter = HomeListAdapter()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewBinding.HomeList.adapter = adapter
     }
 }
