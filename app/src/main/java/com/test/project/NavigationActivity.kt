@@ -6,7 +6,6 @@ import android.os.PersistableBundle
 import android.viewbinding.library.activity.viewBinding
 import com.test.project.databinding.ActivityNavigationBinding
 
-
 class NavigationActivity : AppCompatActivity(R.layout.activity_navigation){
 
     private val binding: ActivityNavigationBinding by viewBinding()
@@ -14,8 +13,8 @@ class NavigationActivity : AppCompatActivity(R.layout.activity_navigation){
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
 
-    }
 
+    }
 }
 
 
