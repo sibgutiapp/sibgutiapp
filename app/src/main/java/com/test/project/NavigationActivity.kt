@@ -8,6 +8,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.fragment.NavHostFragment
 import com.test.project.databinding.ActivityNavigationBinding
 
+
 class NavigationActivity : AppCompatActivity(){
 
     private val binding: ActivityNavigationBinding by viewBinding()
@@ -19,7 +20,6 @@ class NavigationActivity : AppCompatActivity(){
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
     }
-
 }
 
 
