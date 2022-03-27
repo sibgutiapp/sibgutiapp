@@ -26,9 +26,9 @@ class HomeListAdapter :
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.binding.nameTextView.text = dataSet[position]
-        viewHolder.binding.nameTextView.typeface = Typeface.DEFAULT_BOLD
-        viewHolder.binding.descriptionTextView.text = dataSet[position]
+        viewHolder.binding.textViewTitle.text = dataSet[position]
+        viewHolder.binding.textViewTitle.typeface = Typeface.DEFAULT_BOLD
+        viewHolder.binding.textViewDescription.text = dataSet[position]
     }
 
     override fun getItemCount(): Int {
