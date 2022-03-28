@@ -6,4 +6,6 @@
     <string name="home">Home</string>
     <string name="display_name">Name</string>
     <string name="email">Email</string>
+    <string name="description">Description</string>
+    <string name="name">Name</string>
 </resources>
