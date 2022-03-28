@@ -12,12 +12,11 @@ import com.test.project.databinding.ActivityNavigationBinding
 
 class NavigationActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityNavigationBinding
+    private val binding: ActivityNavigationBinding by viewBinding()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
-        binding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -25,6 +24,7 @@ class NavigationActivity : AppCompatActivity() {
         binding.bottomNavigationMenu.setupWithNavController(navController)
     }
 }
+
 
 
 
