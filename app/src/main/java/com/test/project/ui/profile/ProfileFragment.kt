@@ -1,4 +1,4 @@
-package com.test.project.ui.home
+package com.test.project.ui.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

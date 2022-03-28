@@ -11,7 +11,7 @@
         tools:layout="@layout/home_fragment"/>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.test.project.ui.home.ProfileFragment"
+        android:name="com.test.project.ui.profile.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/profile_fragment"/>
 </navigation>
