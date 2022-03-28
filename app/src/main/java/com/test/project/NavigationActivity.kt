@@ -17,8 +17,13 @@ class NavigationActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         installSplashScreen()
         setContentView(R.layout.activity_navigation)
+        initBottomMenu()
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
+    }
+
+    private fun initBottomMenu() {
+        binding.bottomNavigationMenu.itemIconTintList = null
     }
 }
 
