@@ -2,13 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:enabled="true"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
-        android:title="@string/home"
-        android:visible="true" />
+        android:title="@string/home" />
     <item
-        android:enabled="true"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
-        android:title="@string/profile"
-        android:visible="true" />
+        android:title="@string/profile" />
 </menu>
