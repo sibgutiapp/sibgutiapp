@@ -16,14 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     <ImageView
         android:id="@+id/imageview_profile_avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxWidth="100dp"
-        android:maxHeight="100dp"
-        android:minWidth="50dp"
-        android:minHeight="50dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/ic_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +30,7 @@
         app:layout_constraintVertical_bias="0.186" />
 
     <TextView
-        android:id="@+id/textview_profile_display_name"
+        android:id="@+id/textview_profile_full_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/display_name"
@@ -43,34 +40,35 @@
         app:layout_constraintTop_toBottomOf="@id/imageview_profile_avatar" />
 
     <TextView
-        android:id="@+id/textview_profile_email"
+        android:id="@+id/textview_profile_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_profile_display_name" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_profile_full_name" />
 
-    <EditText
-        android:id="@+id/edittext_profile_name"
+    <TextView
+        android:id="@+id/textview_profile_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/name"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/email"
+        android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_profile_email" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_profile_phone" />
 
     <Button
         android:id="@+id/button_profile_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/login"
+        app:layout_constraintBottom_toBottomOf="@+id/swipe"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_profile_name" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_profile_group" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
