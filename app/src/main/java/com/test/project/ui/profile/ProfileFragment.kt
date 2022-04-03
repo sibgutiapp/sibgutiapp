@@ -1,16 +1,18 @@
 package com.test.project.ui.profile
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.View
 import com.test.project.R
-import com.test.project.databinding.ProfileFragmentBinding
 import android.viewbinding.library.fragment.viewBinding
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import coil.load
+import com.test.project.databinding.ProfileFragmentBinding
+
 import com.test.project.domain.entity.User
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -52,6 +54,12 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
             }
             buttonProfileLogin.setOnClickListener {
                 model.getUser(loginName)
+            }
+            swipe.setOnRefreshListener {
+                model.getUser(loginName)
+                Handler().postDelayed(Runnable {
+                    swipe.isRefreshing = false
+                }, 2000)
             }
         }
     }
