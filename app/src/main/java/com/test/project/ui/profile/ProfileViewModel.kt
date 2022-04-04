@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.project.data.remote.network.NetworkErrors
 import com.test.project.domain.RequestResult
+import com.test.project.domain.entity.Friend
 import com.test.project.domain.entity.ProfileMy
 import com.test.project.domain.repo.ISibgutiHerokuRepo
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +19,24 @@ class ProfileViewModel(
     private val _userState = MutableStateFlow<ProfileMy?>(null)
     val userStateFlow = _userState.asStateFlow().filterNotNull()
 
+    private val _friendListState = MutableStateFlow<List<Friend>?>(null)
+    val friendsListFlow = _friendListState.asStateFlow().filterNotNull()
+
     private val _error = MutableStateFlow<NetworkErrors?>(null)
+
+    fun getFriends() {
+        viewModelScope.launch {
+            when (val result = sibgutiHerokuRepo.getFriends()) {
+                is RequestResult.Success -> {
+                    _friendListState.emit(result.data)
+                }
+
+                is RequestResult.Error -> {
+                    _error.emit(result.exception)
+                }
+            }
+        }
+    }
 
     fun getUser() {
         viewModelScope.launch {

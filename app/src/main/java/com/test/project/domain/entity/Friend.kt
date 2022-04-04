@@ -1,8 +1,9 @@
 package com.test.project.domain.entity
 
-data class ProfileMy(
+data class Friend(
+    val id: Int,
     val fullName: String,
     val group: String,
-    val avatarUrl: String,
-    val phoneNumber: String
+    val phone: String,
+    val avatarUrl: String
 )

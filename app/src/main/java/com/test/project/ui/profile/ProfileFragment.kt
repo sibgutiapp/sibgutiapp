@@ -30,6 +30,11 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 model.userStateFlow.collect {
                     showInfo(it)
+                    println(13)
+                }
+                model.friendsListFlow.collect {
+                    println(it)
+                    println(123)
                 }
             }
         }
@@ -51,6 +56,7 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
         with(viewBinding) {
             buttonProfileLogin.setOnClickListener {
                 model.getUser()
+                model.getFriends()
             }
             swipe.setOnRefreshListener {
                 model.getUser()
