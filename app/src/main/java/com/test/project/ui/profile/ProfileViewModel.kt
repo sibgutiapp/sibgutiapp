@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.project.data.remote.network.NetworkErrors
 import com.test.project.domain.RequestResult
-import com.test.project.domain.entity.User
+import com.test.project.domain.entity.ProfileMy
 import com.test.project.domain.repo.ISibgutiHerokuRepo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,14 +15,14 @@ class ProfileViewModel(
     private val sibgutiHerokuRepo: ISibgutiHerokuRepo
 ) : ViewModel() {
 
-    private val _userState = MutableStateFlow<User?>(null)
+    private val _userState = MutableStateFlow<ProfileMy?>(null)
     val userStateFlow = _userState.asStateFlow().filterNotNull()
 
     private val _error = MutableStateFlow<NetworkErrors?>(null)
 
-    fun getUser(name: String) {
+    fun getUser() {
         viewModelScope.launch {
-            when (val result = sibgutiHerokuRepo.getUser(name)) {
+            when (val result = sibgutiHerokuRepo.getProfileMy()) {
 
                 is RequestResult.Success -> {
                     _userState.emit(result.data)
