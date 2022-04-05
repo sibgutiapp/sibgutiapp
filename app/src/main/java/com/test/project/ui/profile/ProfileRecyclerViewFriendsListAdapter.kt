@@ -42,7 +42,6 @@ class ProfileRecyclerViewFriendsListAdapter :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        println(dataList?.get(position)!!)
         holder.bind(dataList?.get(position)!!)
     }
 
