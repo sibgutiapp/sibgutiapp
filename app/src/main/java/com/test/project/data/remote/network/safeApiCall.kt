@@ -15,6 +15,7 @@ suspend fun <T> safeApiCall(apiCall: suspend () -> T): RequestResult<T> {
     return try {
         RequestResult.Success(apiCall())
     } catch (throwable: Exception) {
+        print(throwable)
         when (throwable) {
             is HttpException -> RequestResult.Error(
                 (mapError(

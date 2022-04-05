@@ -17,7 +17,7 @@ class SibgutiHerokuRepo(private val dataSource: SibgutiHerokuRemoteDataSource) :
 
             is RequestResult.Success -> {
                 RequestResult.Success(
-                    result.data.friendsList.map {
+                    result.data.map {
                         it.toFriend()
                     }
                 )

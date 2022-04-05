@@ -20,5 +20,5 @@ interface ISibgutiHerokuService {
     suspend fun getProfileMy(): ApiProfileMy
 
     @GET("friends/my")
-    suspend fun getFriends(): ApiFriends
+    suspend fun getFriends(): List<ApiFriend>
 }
