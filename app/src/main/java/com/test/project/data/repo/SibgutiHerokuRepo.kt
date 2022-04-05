@@ -1,7 +1,6 @@
 package com.test.project.data.repo
 
 import com.test.project.data.dataSource.SibgutiHerokuRemoteDataSource
-import com.test.project.data.remote.entity.ApiFriend
 import com.test.project.data.remote.entity.toFriend
 import com.test.project.data.remote.entity.toProfileMy
 import com.test.project.domain.RequestResult

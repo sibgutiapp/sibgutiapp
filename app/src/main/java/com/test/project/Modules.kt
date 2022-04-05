@@ -10,7 +10,6 @@ import com.test.project.domain.repo.ISibgutiHerokuRepo
 import com.test.project.ui.profile.ProfileViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
-import org.koin.core.scope.get
 import org.koin.dsl.module
 
 val networkModule = module {

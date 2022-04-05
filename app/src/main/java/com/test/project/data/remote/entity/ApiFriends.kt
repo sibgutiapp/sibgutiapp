@@ -4,11 +4,6 @@ import com.squareup.moshi.*
 import com.test.project.domain.entity.Friend
 
 @JsonClass(generateAdapter = true)
-data class ApiFriends(
-    val friendsList: List<ApiFriend>
-)
-
-@JsonClass(generateAdapter = true)
 data class ApiFriend(
     @Json(name = "full_name")
     val fullName: String?,

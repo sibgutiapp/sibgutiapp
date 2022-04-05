@@ -62,7 +62,7 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
             }
 
             buttonProfileLogin.setOnClickListener {
-                model.getUser()
+                model.getProfileMy()
                 model.getFriends()
             }
         }
