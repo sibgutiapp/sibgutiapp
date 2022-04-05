@@ -38,7 +38,7 @@ class ProfileViewModel(
         }
     }
 
-    fun getUser() {
+    fun getProfileMy() {
         viewModelScope.launch {
             when (val result = sibgutiHerokuRepo.getProfileMy()) {
 

@@ -29,12 +29,16 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
         super.onViewCreated(view, savedInstanceState)
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-//                model.userStateFlow.collect {
-//                    showInfo(it)
-//                }
-                model.friendsListFlow.collect {
-                    adapterProfileRecyclerViewFriendsList.setUpdatedData(it)
-                    adapterProfileRecyclerViewFriendsList.notifyDataSetChanged()
+                launch {
+                    model.userStateFlow.collect {
+                        showInfo(it)
+                    }
+                }
+                launch {
+                    model.friendsListFlow.collect {
+                        adapterProfileRecyclerViewFriendsList.setUpdatedData(it)
+                        adapterProfileRecyclerViewFriendsList.notifyDataSetChanged()
+                    }
                 }
             }
         }
