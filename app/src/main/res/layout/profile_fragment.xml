@@ -9,7 +9,9 @@
         android:id="@+id/recyclerview_profile_friends_list"
         android:layout_width="336dp"
         android:layout_height="92dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_profile_group" />
 
@@ -20,39 +22,40 @@
         android:src="@drawable/ic_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.137" />
+        app:layout_constraintVertical_bias="0.025" />
 
     <TextView
         android:id="@+id/textview_profile_full_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:text="@string/display_name"
         android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageview_profile_avatar" />
+        app:layout_constraintStart_toEndOf="@+id/imageview_profile_avatar"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textview_profile_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/email"
+        android:layout_marginStart="20dp"
+        android:text="@string/phone"
         android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageview_profile_avatar"
         app:layout_constraintTop_toBottomOf="@+id/textview_profile_full_name" />
 
     <TextView
         android:id="@+id/textview_profile_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/email"
+        android:layout_marginStart="20dp"
+        android:text="@string/group"
         android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageview_profile_avatar"
         app:layout_constraintTop_toBottomOf="@+id/textview_profile_phone" />
 
     <Button
