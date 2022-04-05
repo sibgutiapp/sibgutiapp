@@ -23,6 +23,7 @@ class SibgutiHerokuRepo(private val dataSource: SibgutiHerokuRemoteDataSource) :
                 )
             }
             is RequestResult.Error -> {
+                println(result.exception)
                 RequestResult.Error(
                     result.exception
                 )

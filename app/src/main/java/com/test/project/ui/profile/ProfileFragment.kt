@@ -56,13 +56,10 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
         with(viewBinding) {
             buttonProfileLogin.setOnClickListener {
                 model.getUser()
-                model.getFriends()
             }
             swipe.setOnRefreshListener {
-                model.getUser()
-                Handler(Looper.getMainLooper()).postDelayed(Runnable {
-                    swipe.isRefreshing = false
-                }, 2000)
+                model.getFriends()
+                swipe.isRefreshing = false
             }
         }
     }

@@ -1,7 +1,6 @@
 package com.test.project.data.remote.entity
 
 import com.squareup.moshi.*
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.test.project.domain.entity.Friend
 
 @JsonClass(generateAdapter = true)
