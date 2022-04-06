@@ -1,10 +1,11 @@
 package com.test.project.data.remote.entity
 
-import com.squareup.moshi.*
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import com.test.project.domain.entity.Friend
 
 @JsonClass(generateAdapter = true)
-data class ApiFriend(
+data class ApiUser(
     @Json(name = "full_name")
     val fullName: String?,
     @Json(name = "avatar_url")
@@ -17,7 +18,7 @@ data class ApiFriend(
     val group: String?
 )
 
-fun ApiFriend?.toFriend() = Friend(
+fun ApiUser?.toFriend() = Friend(
     fullName = this?.fullName ?: "",
     group = this?.group ?: "",
     avatarUrl = this?.avatarUrl ?: "",

@@ -12,4 +12,8 @@ class SibgutiHerokuRemoteDataSource(
     suspend fun getFriends() = safeApiCall {
         api.getFriends()
     }
+
+    suspend fun getNews() = safeApiCall {
+        api.getNews()
+    }
 }
