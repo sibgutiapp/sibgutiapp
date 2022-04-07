@@ -7,11 +7,11 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.test.project.ui.home.HomeFragment"
-        android:label="HomeFragment"
+        android:label="Home"
         tools:layout="@layout/home_fragment"/>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.test.project.ui.profile.ProfileFragment"
-        android:label="ProfileFragment"
+        android:label="Profile"
         tools:layout="@layout/profile_fragment"/>
 </navigation>

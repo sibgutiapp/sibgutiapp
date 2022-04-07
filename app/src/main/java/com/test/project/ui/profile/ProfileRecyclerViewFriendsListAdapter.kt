@@ -10,13 +10,13 @@ import com.test.project.domain.entity.Friend
 class ProfileRecyclerViewFriendsListAdapter :
     RecyclerView.Adapter<ProfileRecyclerViewFriendsListAdapter.ViewHolder>() {
 
-    var dataList: List<Friend>? = null
+    private var dataList: List<Friend>? = null
 
     fun setUpdatedData(dataList: List<Friend>) {
         this.dataList = dataList
     }
 
-    class ViewHolder(val binding: ItemProfileFriendsListBinding) :
+    class ViewHolder(private val binding: ItemProfileFriendsListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Friend) {
             with(binding) {
@@ -31,8 +31,8 @@ class ProfileRecyclerViewFriendsListAdapter :
     override fun onCreateViewHolder(
         viewGroup: ViewGroup,
         viewType: Int
-    ): ProfileRecyclerViewFriendsListAdapter.ViewHolder {
-        return ProfileRecyclerViewFriendsListAdapter.ViewHolder(
+    ): ViewHolder {
+        return ViewHolder(
             ItemProfileFriendsListBinding.inflate(
                 LayoutInflater.from(viewGroup.context),
                 viewGroup,

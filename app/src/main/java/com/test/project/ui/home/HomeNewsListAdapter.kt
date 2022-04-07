@@ -1,6 +1,7 @@
 package com.test.project.ui.home
 
 import android.annotation.SuppressLint
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,17 +12,18 @@ import com.test.project.domain.entity.News
 class HomeNewsListAdapter :
     RecyclerView.Adapter<HomeNewsListAdapter.ViewHolder>() {
 
-    var dataList: List<News>? = null
+    private var dataList: List<News>? = null
 
     fun setUpdatedData(dataList: List<News>) {
         this.dataList = dataList
     }
 
-    class ViewHolder(val binding: ItemHomeNewsListBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemHomeNewsListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: News) {
             with(binding) {
                 textviewDescription.text = data.description
                 textviewTitle.text = data.title
+                textviewTitle.typeface = Typeface.DEFAULT_BOLD
             }
         }
     }
