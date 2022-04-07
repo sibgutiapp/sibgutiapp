@@ -22,7 +22,7 @@ data class ApiNews(
 
 fun ApiNews.toNews() = News(
     dateTime = this.dateTime ?: "",
-    author = this.author ?: null,
+    author = this.author,
     imageUrl = this.imageUrl ?: "",
     description = this.description ?: "",
     id = this.id ?: -1,
