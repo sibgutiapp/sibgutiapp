@@ -23,7 +23,8 @@
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_profile" />
+        tools:srcCompat="@drawable/ic_profile"
+        android:contentDescription="@string/avatar" />
 
     <TextView
         android:id="@+id/textview_item_friends_list_group"

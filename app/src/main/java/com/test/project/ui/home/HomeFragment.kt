@@ -47,6 +47,10 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                 val manager = LinearLayoutManager(context)
                 layoutManager = manager
             }
+            swipeRefreshHome.setOnRefreshListener {
+                model.getNews()
+                swipeRefreshHome.isRefreshing = false
+            }
         }
     }
 }

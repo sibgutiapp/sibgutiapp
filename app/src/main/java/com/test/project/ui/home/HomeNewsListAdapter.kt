@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.test.project.databinding.ItemHomeNewsListBinding
 import com.test.project.domain.entity.News
 
@@ -21,9 +22,12 @@ class HomeNewsListAdapter :
     class ViewHolder(private val binding: ItemHomeNewsListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: News) {
             with(binding) {
-                textviewDescription.text = data.description
-                textviewTitle.text = data.title
-                textviewTitle.typeface = Typeface.DEFAULT_BOLD
+                textviewItemNewsListDescription.text = data.description
+                textviewItemNewsListTitle.text = data.title
+                textviewItemNewsListTitle.typeface = Typeface.DEFAULT_BOLD
+                println(imageviewItemNewsListImage.load(data.imageUrl))
+                textviewItemNewsListAuthor.text = data.author?.fullName ?: ""
+                textviewItemNewsListDate.text = data.dateTime
             }
         }
     }
