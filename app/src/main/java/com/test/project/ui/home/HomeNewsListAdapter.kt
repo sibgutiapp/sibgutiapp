@@ -25,7 +25,7 @@ class HomeNewsListAdapter :
                 textviewItemNewsListDescription.text = data.description
                 textviewItemNewsListTitle.text = data.title
                 textviewItemNewsListTitle.typeface = Typeface.DEFAULT_BOLD
-                println(imageviewItemNewsListImage.load(data.imageUrl))
+                imageviewItemNewsListImage.load(data.imageUrl)
                 textviewItemNewsListAuthor.text = data.author?.fullName ?: ""
                 textviewItemNewsListDate.text = data.dateTime
             }
