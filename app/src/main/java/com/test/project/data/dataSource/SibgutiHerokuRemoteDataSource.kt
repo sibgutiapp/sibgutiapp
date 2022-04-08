@@ -8,4 +8,8 @@ class SibgutiHerokuRemoteDataSource(
     suspend fun getUser(login: String) = safeApiCall {
         api.getUser(login)
     }
+
+    suspend fun getNews() = safeApiCall {
+        api.getNews()
+    }
 }

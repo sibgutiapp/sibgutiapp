@@ -7,6 +7,7 @@ import com.test.project.data.remote.network.Network
 import com.test.project.data.remote.network.SupportInterceptor
 import com.test.project.data.repo.SibgutiHerokuRepo
 import com.test.project.domain.repo.ISibgutiHerokuRepo
+import com.test.project.ui.home.HomeViewModel
 import com.test.project.ui.profile.ProfileViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -32,6 +33,7 @@ val repositoryModule = module {
 
 val viewModelModules = module {
     viewModel { ProfileViewModel(get()) }
+    viewModel { HomeViewModel(get()) }
 }
 
 fun getModules(): List<Module> {
