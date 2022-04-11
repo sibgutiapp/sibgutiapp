@@ -1,6 +1,5 @@
 package com.test.project.ui.home
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
@@ -44,9 +43,15 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
             with(recyclerViewHomeList) {
                 adapter = adapterNews
                 layoutManager = LinearLayoutManager(requireContext())
-                adapterNews.setOnItemClickListener(object : HomeNewsListAdapter.OnItemClickListener{
+                adapterNews.setOnItemClickListener(object :
+                    HomeNewsListAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        findNavController().navigate(R.id.action_homeFragment_to_fullNewsFragment)
+                        val bundle = Bundle()
+                        bundle.putInt("position", position)
+                        findNavController().navigate(
+                            R.id.action_homeFragment_to_fullNewsFragment,
+                            bundle
+                        )
                     }
                 })
             }

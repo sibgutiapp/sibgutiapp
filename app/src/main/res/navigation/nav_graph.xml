@@ -22,10 +22,10 @@
         android:id="@+id/fullNewsFragment"
         android:name="com.test.project.ui.home.FullNewsFragment"
         android:label="FullNewsFragment"
-        tools:layout="@layout/full_news_fragment"
-        >
-        <action
-            android:id="@+id/action_fullNewsFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+        tools:layout="@layout/full_news_fragment">
+        <argument
+            android:name="@string/position"
+            android:defaultValue="-1"
+        />
     </fragment>
 </navigation>
