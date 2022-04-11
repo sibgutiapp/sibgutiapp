@@ -22,10 +22,10 @@ class ProfileRecyclerViewFriendsListAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Friend) {
             with(binding) {
-                textviewItemFriendsListGroup.text = data.group
-                textviewItemFriendsListName.text = data.fullName
-                textviewItemFriendsListPhone.text = data.phone
-                imageviewItemFriendsListAvatar.load(data.avatarUrl)
+                textviewItemGroup.text = data.group
+                textviewItemName.text = data.fullName
+                textviewItemPhone.text = data.phone
+                imageviewItemAvatar.load(data.avatarUrl)
             }
         }
     }
@@ -47,6 +47,6 @@ class ProfileRecyclerViewFriendsListAdapter :
         holder.bind(dataList[position])
     }
 
-    override fun getItemCount()= dataList.size
+    override fun getItemCount() = dataList.size
 
 }

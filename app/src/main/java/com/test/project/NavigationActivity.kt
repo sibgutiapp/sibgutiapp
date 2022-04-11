@@ -3,7 +3,6 @@ package com.test.project
 import android.os.Bundle
 import android.view.View
 import android.viewbinding.library.activity.viewBinding
-import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.fragment.NavHostFragment
@@ -33,7 +32,7 @@ class NavigationActivity : AppCompatActivity() {
             }
         }
         val appBarConfiguration =
-            AppBarConfiguration(setOf(R.id.homeFragment, R.id.profileFragment))
+            AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNavigationMenu.setupWithNavController(navController)
     }
