@@ -1,16 +1,15 @@
 package com.test.project.ui.profile
 
+import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.View
 import com.test.project.R
 import android.viewbinding.library.fragment.viewBinding
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.test.project.databinding.ProfileFragmentBinding
 
@@ -23,17 +22,26 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
 
     private val viewBinding: ProfileFragmentBinding by viewBinding()
     private val model: ProfileViewModel by viewModel()
+    private val adapterProfileRecyclerViewFriendsList: ProfileRecyclerViewFriendsListAdapter =
+        ProfileRecyclerViewFriendsListAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                model.userStateFlow.collect {
-                    showInfo(it)
+                launch {
+                    model.userStateFlow.collect {
+                        showInfo(it)
+                    }
+                }
+                launch {
+                    model.friendsListFlow.collect {
+                        adapterProfileRecyclerViewFriendsList.setUpdatedData(it)
+                    }
                 }
             }
         }
-        bindUi()
+        bindUi(view.context)
     }
 
     private fun showInfo(user: ProfileMy) {
@@ -47,16 +55,13 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
         }
     }
 
-    private fun bindUi() {
+    private fun bindUi(context: Context) {
         with(viewBinding) {
-            buttonProfileLogin.setOnClickListener {
-                model.getUser()
-            }
-            swipe.setOnRefreshListener {
-                model.getUser()
-                Handler(Looper.getMainLooper()).postDelayed(Runnable {
-                    swipe.isRefreshing = false
-                }, 2000)
+            with(recyclerviewProfileFriendsList) {
+                adapter = adapterProfileRecyclerViewFriendsList
+                val managerRecyclerViewFriendsListAdapter = LinearLayoutManager(context)
+                layoutManager = managerRecyclerViewFriendsListAdapter
+                setHasFixedSize(true)
             }
         }
     }
