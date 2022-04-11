@@ -1,6 +1,7 @@
 package com.test.project
 
 import android.os.Bundle
+import android.view.View
 import android.viewbinding.library.activity.viewBinding
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,13 @@ class NavigationActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.homeFragment -> showBottomNavigationMenu()
+                R.id.profileFragment -> showBottomNavigationMenu()
+                else -> hideBottomNavigationMenu()
+            }
+        }
         val appBarConfiguration =
             AppBarConfiguration(setOf(R.id.homeFragment, R.id.profileFragment))
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -32,6 +40,14 @@ class NavigationActivity : AppCompatActivity() {
 
     private fun initBottomMenu() {
         binding.bottomNavigationMenu.itemIconTintList = null
+    }
+
+    private fun showBottomNavigationMenu() {
+        binding.bottomNavigationMenu.visibility = View.VISIBLE
+    }
+
+    private fun hideBottomNavigationMenu() {
+        binding.bottomNavigationMenu.visibility = View.GONE
     }
 }
 
