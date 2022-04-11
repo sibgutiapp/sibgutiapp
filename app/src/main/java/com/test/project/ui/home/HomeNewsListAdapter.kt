@@ -22,10 +22,11 @@ class HomeNewsListAdapter :
         this.listener = listener
     }
 
-    private var dataList: List<News>? = null
+    private var dataList: MutableList<News> = mutableListOf()
 
     fun setUpdatedData(dataList: List<News>) {
-        this.dataList = dataList
+        this.dataList.clear()
+        this.dataList.addAll(dataList)
         notifyDataSetChanged()
     }
 
@@ -58,12 +59,9 @@ class HomeNewsListAdapter :
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(dataList?.get(position)!!)
+        viewHolder.bind(dataList[position])
     }
 
-    override fun getItemCount(): Int {
-        if (dataList == null) return 0
-        return dataList!!.size
-    }
+    override fun getItemCount() = dataList.size
 
 }

@@ -10,10 +10,12 @@ import com.test.project.domain.entity.Friend
 class ProfileRecyclerViewFriendsListAdapter :
     RecyclerView.Adapter<ProfileRecyclerViewFriendsListAdapter.ViewHolder>() {
 
-    private var dataList: List<Friend>? = null
+    private var dataList: MutableList<Friend> = mutableListOf()
 
     fun setUpdatedData(dataList: List<Friend>) {
-        this.dataList = dataList
+        this.dataList.clear()
+        this.dataList.addAll(dataList)
+        notifyDataSetChanged()
     }
 
     class ViewHolder(private val binding: ItemProfileFriendsListBinding) :
@@ -42,13 +44,9 @@ class ProfileRecyclerViewFriendsListAdapter :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(dataList?.get(position)!!)
+        holder.bind(dataList[position])
     }
 
-    override fun getItemCount(): Int {
-        if(dataList == null) {
-            return 0
-        }
-        return dataList!!.size
-    }
+    override fun getItemCount()= dataList.size
+
 }

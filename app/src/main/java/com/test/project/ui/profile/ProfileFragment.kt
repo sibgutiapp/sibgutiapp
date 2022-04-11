@@ -37,7 +37,6 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
                 launch {
                     model.friendsListFlow.collect {
                         adapterProfileRecyclerViewFriendsList.setUpdatedData(it)
-                        adapterProfileRecyclerViewFriendsList.notifyDataSetChanged()
                     }
                 }
             }

@@ -28,9 +28,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     model.newsStateFlow.collect {
-                        with(adapterNews) {
-                            setUpdatedData(it)
-                        }
+                        adapterNews.setUpdatedData(it)
                     }
                 }
             }
