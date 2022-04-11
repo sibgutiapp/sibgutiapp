@@ -34,12 +34,12 @@ class HomeNewsListAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: News) {
             with(binding) {
-                textviewItemNewsListDescription.text = data.description
-                textviewItemNewsListTitle.text = data.title
-                textviewItemNewsListTitle.typeface = Typeface.DEFAULT_BOLD
-                imageviewItemNewsListImage.load(data.imageUrl)
-                textviewItemNewsListAuthor.text = data.author?.fullName ?: ""
-                textviewItemNewsListDate.text = data.dateTime
+                textviewItemDescription.text = data.description
+                textviewItemTitle.text = data.title
+                textviewItemTitle.typeface = Typeface.DEFAULT_BOLD
+                imageviewItemImage.load(data.imageUrl)
+                textviewItemAuthor.text = data.author?.fullName ?: ""
+                textviewItemDate.text = data.dateTime
             }
             itemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
