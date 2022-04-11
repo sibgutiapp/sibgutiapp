@@ -24,6 +24,11 @@ class ProfileViewModel(
 
     private val _error = MutableStateFlow<NetworkErrors?>(null)
 
+    init {
+        getProfileMy()
+        getFriends()
+    }
+
     fun getFriends() {
         viewModelScope.launch {
             when (val result = sibgutiHerokuRepo.getFriends()) {

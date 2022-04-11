@@ -64,11 +64,6 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
                 layoutManager = managerRecyclerViewFriendsListAdapter
                 setHasFixedSize(true)
             }
-
-            buttonProfileLogin.setOnClickListener {
-                model.getProfileMy()
-                model.getFriends()
-            }
         }
     }
 

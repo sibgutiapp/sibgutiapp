@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.test.project.R
 import com.test.project.databinding.HomeFragmentBinding
@@ -24,28 +25,30 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        model.getNews()
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     model.newsStateFlow.collect {
                         with(adapterNews) {
                             setUpdatedData(it)
-                            notifyDataSetChanged()
                         }
                     }
                 }
             }
         }
-        bindUi(view.context)
+        bindUi()
     }
 
-    private fun bindUi(context: Context?) {
+    private fun bindUi() {
         with(viewBinding) {
             with(recyclerViewHomeList) {
                 adapter = adapterNews
-                val manager = LinearLayoutManager(context)
-                layoutManager = manager
+                layoutManager = LinearLayoutManager(requireContext())
+                adapterNews.setOnItemClickListener(object : HomeNewsListAdapter.OnItemClickListener{
+                    override fun onItemClick(position: Int) {
+                        findNavController().navigate(R.id.action_homeFragment_to_fullNewsFragment)
+                    }
+                })
             }
             swipeRefreshHome.setOnRefreshListener {
                 model.getNews()

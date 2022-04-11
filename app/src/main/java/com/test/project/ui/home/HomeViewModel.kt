@@ -12,11 +12,15 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val sibgutiHerokuRepo: ISibgutiHerokuRepo) : ViewModel() {
-
+    
     private val _newsState = MutableStateFlow<List<News>?>(null)
     val newsStateFlow = _newsState.asStateFlow().filterNotNull()
 
     private val _error = MutableStateFlow<NetworkErrors?>(null)
+
+    init {
+        getNews()
+    }
 
     fun getNews() {
         viewModelScope.launch {
@@ -31,5 +35,4 @@ class HomeViewModel(private val sibgutiHerokuRepo: ISibgutiHerokuRepo) : ViewMod
             }
         }
     }
-
 }

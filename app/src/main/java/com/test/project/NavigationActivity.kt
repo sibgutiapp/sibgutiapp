@@ -2,6 +2,7 @@ package com.test.project
 
 import android.os.Bundle
 import android.viewbinding.library.activity.viewBinding
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.fragment.NavHostFragment
@@ -9,7 +10,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.test.project.databinding.ActivityNavigationBinding
-import com.test.project.ui.home.HomeViewModel
 
 
 class NavigationActivity : AppCompatActivity() {
@@ -21,9 +21,11 @@ class NavigationActivity : AppCompatActivity() {
         installSplashScreen()
         initBottomMenu()
         setContentView(binding.root)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.profileFragment))
+        val appBarConfiguration =
+            AppBarConfiguration(setOf(R.id.homeFragment, R.id.profileFragment))
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNavigationMenu.setupWithNavController(navController)
     }

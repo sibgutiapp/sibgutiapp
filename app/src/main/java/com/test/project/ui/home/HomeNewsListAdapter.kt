@@ -9,17 +9,28 @@ import coil.load
 import com.test.project.databinding.ItemHomeNewsListBinding
 import com.test.project.domain.entity.News
 
-
 class HomeNewsListAdapter :
     RecyclerView.Adapter<HomeNewsListAdapter.ViewHolder>() {
+
+    lateinit var listener: OnItemClickListener
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
 
     private var dataList: List<News>? = null
 
     fun setUpdatedData(dataList: List<News>) {
         this.dataList = dataList
+        notifyDataSetChanged()
     }
 
-    class ViewHolder(private val binding: ItemHomeNewsListBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemHomeNewsListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(data: News) {
             with(binding) {
                 textviewItemNewsListDescription.text = data.description
@@ -28,6 +39,9 @@ class HomeNewsListAdapter :
                 imageviewItemNewsListImage.load(data.imageUrl)
                 textviewItemNewsListAuthor.text = data.author?.fullName ?: ""
                 textviewItemNewsListDate.text = data.dateTime
+            }
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
             }
         }
     }
@@ -51,4 +65,5 @@ class HomeNewsListAdapter :
         if (dataList == null) return 0
         return dataList!!.size
     }
+
 }

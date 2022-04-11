@@ -8,10 +8,24 @@
         android:id="@+id/homeFragment"
         android:name="com.test.project.ui.home.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/home_fragment"/>
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_fullNewsFragment"
+            app:destination="@id/fullNewsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.test.project.ui.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/profile_fragment"/>
+    <fragment
+        android:id="@+id/fullNewsFragment"
+        android:name="com.test.project.ui.home.FullNewsFragment"
+        android:label="FullNewsFragment"
+        tools:layout="@layout/full_news_fragment"
+        >
+        <action
+            android:id="@+id/action_fullNewsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
