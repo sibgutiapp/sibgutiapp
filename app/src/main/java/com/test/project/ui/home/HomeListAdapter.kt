@@ -1,13 +1,11 @@
 package com.test.project.ui.home
 
 import android.annotation.SuppressLint
-import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.test.project.databinding.ItemHomeListBinding
 import com.test.project.databinding.NewsCardviewBinding
-import com.test.project.domain.entit.News
+import com.test.project.domain.entity.News
 
 
 class HomeListAdapter :
@@ -28,16 +26,16 @@ class HomeListAdapter :
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.binding.titleTextveiw.text = dataSet[position].author.fullName
-        viewHolder.binding.authorTextview.text = dataSet[position].title
-        viewHolder.binding.dateTextview.text = dataSet[position].dateTime
+        viewHolder.binding.authorNewsTextview.text = dataSet[position].author.fullName
+        viewHolder.binding.titleNewsTextview.text = dataSet[position].title
+        viewHolder.binding.dateNewsTextview.text = dataSet[position].dateTime
     }
 
     override fun getItemCount(): Int {
         return dataSet.size
     }
 
-    fun addNews(dataset : List<News>){
+    fun updateNews(dataset : List<News>){
         this.dataSet.clear()
         this.dataSet.addAll(dataset)
         notifyDataSetChanged()

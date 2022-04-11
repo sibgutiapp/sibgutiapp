@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.project.data.remote.network.NetworkErrors
 import com.test.project.domain.RequestResult
-import com.test.project.domain.entit.News
+import com.test.project.domain.entity.News
 import com.test.project.domain.repo.ISibgutiHerokuRepo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -18,6 +18,11 @@ class HomeViewModel(
     val newsStateFlow = _newsState.asStateFlow().filterNotNull()
 
     private val _error = MutableStateFlow<NetworkErrors?>(null)
+
+    init{
+        getNews()
+    }
+
 
     fun getNews( ) {
         viewModelScope.launch {
