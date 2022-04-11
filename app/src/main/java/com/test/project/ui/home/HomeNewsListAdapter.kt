@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.transform.CircleCropTransformation
+import com.test.project.R
 import com.test.project.databinding.ItemHomeNewsListBinding
 import com.test.project.domain.entity.News
 
@@ -37,7 +39,9 @@ class HomeNewsListAdapter :
                 textviewItemDescription.text = data.description
                 textviewItemTitle.text = data.title
                 textviewItemTitle.typeface = Typeface.DEFAULT_BOLD
-                imageviewItemImage.load(data.imageUrl)
+                imageviewItemImage.load(data.imageUrl) {
+                    crossfade(true)
+                }
                 textviewItemAuthor.text = data.author?.fullName ?: ""
                 textviewItemDate.text = data.dateTime
             }

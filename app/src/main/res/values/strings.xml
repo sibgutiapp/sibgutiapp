@@ -16,4 +16,5 @@
     <string name="news_image">News image</string>
     <string name="avatar">Avatar</string>
     <string name="position">Position</string>
+    <string name="friends">Friends</string>
 </resources>
