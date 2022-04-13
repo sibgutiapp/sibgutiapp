@@ -1,4 +1,4 @@
-package com.test.project.ui.schedule
+package com.test.project.ui.schedule.tab
 
 import android.os.Bundle
 import android.view.View
@@ -7,15 +7,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.test.project.R
 import com.test.project.databinding.ScheduleTabFragmentBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.test.project.ui.schedule.ScheduleViewModel
 
-class ScheduleTabFragment(val position: Int) : Fragment(R.layout.schedule_tab_fragment) {
+class ScheduleTabFragment : Fragment(R.layout.schedule_tab_fragment) {
 
     private val binding: ScheduleTabFragmentBinding by viewBinding()
     private val model: ScheduleViewModel by activityViewModels()
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textView2.text = model.tabTitles[position]
+        arguments?.takeIf { it.containsKey("position") }?.apply {
+            val position = getInt("position")
+            binding.textView2.text = model.tabTitles[position]
+        }
     }
 }

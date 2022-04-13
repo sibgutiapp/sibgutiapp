@@ -20,7 +20,7 @@ class ScheduleFragment : Fragment(R.layout.schedule_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewPagerSchedule.adapter =
-            ScheduleViewPagerAdapter(parentFragmentManager, lifecycle)
+            ScheduleViewPagerAdapter(this)
         TabLayoutMediator(binding.tabLayoutSchedule, binding.viewPagerSchedule) { tab, position ->
             tab.text = model.tabTitles[position]
         }.attach()
