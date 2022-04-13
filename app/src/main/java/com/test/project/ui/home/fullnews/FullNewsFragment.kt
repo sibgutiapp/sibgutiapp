@@ -1,6 +1,7 @@
 package com.test.project.ui.home.fullnews
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
+import coil.transform.CircleCropTransformation
 import com.test.project.R
 import com.test.project.databinding.FullNewsFragmentBinding
 import com.test.project.domain.entity.News
@@ -40,7 +42,11 @@ class FullNewsFragment : Fragment(R.layout.full_news_fragment) {
                 textviewItemAuthor.text = author?.fullName ?: ""
                 textviewItemDate.text = dateTime
                 textviewItemDescription.text = description
+                textviewItemDescription.movementMethod = ScrollingMovementMethod()
                 imageviewItemImage.load(imageUrl)
+                imageviewAuthorAvatar.load(author?.avatarUrl) {
+                    transformations(CircleCropTransformation())
+                }
             }
             with(recyclerviewFullNews) {
                 adapter = adapterFullNewsList

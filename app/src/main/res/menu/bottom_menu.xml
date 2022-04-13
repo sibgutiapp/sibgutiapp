@@ -5,13 +5,13 @@
     <item
         android:id="@+id/homeFragment"
         android:enabled="true"
-        android:icon="@android:drawable/ic_menu_myplaces"
+        android:icon="?android:attr/actionModeFindDrawable"
         android:title="@string/home"
         android:visible="true" />
     <item
         android:id="@+id/profileFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_my_user"
+        android:icon="@android:drawable/ic_menu_myplaces"
         android:title="@string/profile"
         android:visible="true" />
 </menu>

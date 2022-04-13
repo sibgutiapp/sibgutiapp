@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
+import coil.transform.CircleCropTransformation
 import com.test.project.databinding.ProfileFragmentBinding
 
 import com.test.project.domain.entity.ProfileMy
@@ -47,7 +48,9 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
     private fun showInfo(user: ProfileMy) {
         with(viewBinding) {
             with(user) {
-                imageviewProfileAvatar.load(avatarUrl)
+                imageviewProfileAvatar.load(avatarUrl) {
+                    transformations(CircleCropTransformation())
+                }
                 textviewProfileFullName.text = fullName
                 textviewProfilePhone.text = phoneNumber
                 textviewProfileGroup.text = group
