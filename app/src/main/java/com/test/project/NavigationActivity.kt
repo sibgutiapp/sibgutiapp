@@ -30,6 +30,7 @@ class NavigationActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.homeFragment -> showBottomNavigationMenu()
                 R.id.profileFragment -> showBottomNavigationMenu()
+                R.id.scheduleFragment -> showBottomNavigationMenu()
                 else -> hideBottomNavigationMenu()
             }
         }

@@ -28,4 +28,9 @@
             android:defaultValue="-1"
         />
     </fragment>
+    <fragment
+        android:id="@+id/scheduleFragment"
+        android:name="com.test.project.ui.schedule.ScheduleFragment"
+        android:label="Расписание"
+        tools:layout="@layout/schedule_fragment"/>
 </navigation>
