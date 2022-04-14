@@ -1,5 +1,6 @@
 package com.test.project.data.dataSource
 
+import com.test.project.data.remote.entity.ApiLesson
 import com.test.project.data.remote.entity.ApiNews
 import com.test.project.data.remote.entity.ApiProfileMy
 import com.test.project.data.remote.entity.ApiUser
@@ -22,4 +23,7 @@ interface ISibgutiHerokuService {
 
     @GET("news/last")
     suspend fun getNews(): List<ApiNews>
+
+    @GET("")
+    suspend fun getSchedule(): List<List<ApiLesson>>
 }
