@@ -24,6 +24,6 @@ interface ISibgutiHerokuService {
     @GET("news/last")
     suspend fun getNews(): List<ApiNews>
 
-    @GET("")
+    @GET("schedule")
     suspend fun getSchedule(): List<List<ApiLesson>>
 }

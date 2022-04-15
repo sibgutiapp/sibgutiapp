@@ -23,6 +23,9 @@ class ScheduleTabFragment : Fragment(R.layout.schedule_tab_fragment) {
         binding.recyclerviewScheduleTab.layoutManager = LinearLayoutManager(this.context)
         arguments?.takeIf { it.containsKey("position") }?.apply {
             val position = getInt("position")
+            if(model.scheduleArray[position].isEmpty()) {
+                binding.textviewNoLessonLabel.text = "Нет занятий"
+            }
             adapterScheduleTabRecyclerViewAdapter.setUpdatedData(model.scheduleArray[position])
         }
     }

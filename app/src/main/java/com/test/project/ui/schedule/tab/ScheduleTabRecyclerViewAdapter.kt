@@ -28,7 +28,7 @@ class ScheduleTabRecyclerViewAdapter :
                     textviewName.text = name
                     textviewType.text = type
                     textviewTeacher.text = teacher
-                    textviewTime.text = timeList[position]
+                    textviewTime.text = timeList.getOrNull(number - 1)
                     textviewClassroom.text = classroom
                 }
             }

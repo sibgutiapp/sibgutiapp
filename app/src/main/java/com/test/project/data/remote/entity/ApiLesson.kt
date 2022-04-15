@@ -6,6 +6,8 @@ import com.test.project.domain.entity.Lesson
 
 @JsonClass(generateAdapter = true)
 data class ApiLesson(
+    @Json(name = "number")
+    val number: Int,
     @Json(name = "name")
     val name: String,
     @Json(name = "teacher")
@@ -17,6 +19,7 @@ data class ApiLesson(
 )
 
 fun ApiLesson.toLesson() = Lesson(
+    number = this.number,
     name = this.name,
     teacher = this.teacher,
     type = this.type,
