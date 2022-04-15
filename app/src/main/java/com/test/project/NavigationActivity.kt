@@ -22,7 +22,6 @@ class NavigationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
-        initBottomMenu()
         setContentView(binding.root)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -31,6 +30,7 @@ class NavigationActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.homeFragment -> showBottomNavigationMenu()
                 R.id.profileFragment -> showBottomNavigationMenu()
+                R.id.scheduleFragment -> showBottomNavigationMenu()
                 else -> hideBottomNavigationMenu()
             }
         }
@@ -43,11 +43,6 @@ class NavigationActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
-    }
-
-
-    private fun initBottomMenu() {
-        binding.bottomNavigationMenu.itemIconTintList = null
     }
 
     private fun showBottomNavigationMenu() {

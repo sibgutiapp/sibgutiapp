@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.transform.CircleCropTransformation
 import com.test.project.databinding.ItemProfileFriendsListBinding
 import com.test.project.domain.entity.Friend
 
@@ -25,7 +26,10 @@ class ProfileRecyclerViewFriendsListAdapter :
                 textviewItemGroup.text = data.group
                 textviewItemName.text = data.fullName
                 textviewItemPhone.text = data.phone
-                imageviewItemAvatar.load(data.avatarUrl)
+                imageviewItemAvatar.load(data.avatarUrl) {
+                    crossfade(true)
+                    transformations(CircleCropTransformation())
+                }
             }
         }
     }

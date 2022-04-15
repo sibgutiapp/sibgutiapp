@@ -29,7 +29,7 @@ class ProfileViewModel(
         getFriends()
     }
 
-    fun getFriends() {
+    private fun getFriends() {
         viewModelScope.launch {
             when (val result = profileRepo.getFriends()) {
                 is RequestResult.Success -> {
@@ -43,7 +43,7 @@ class ProfileViewModel(
         }
     }
 
-    fun getProfileMy() {
+    private fun getProfileMy() {
         viewModelScope.launch {
             when (val result = profileRepo.getProfileMy()) {
 

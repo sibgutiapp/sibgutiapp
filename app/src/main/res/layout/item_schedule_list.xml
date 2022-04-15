@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="4dp"
     app:strokeColor="@color/gray"
     app:strokeWidth="0.05dp">
 
@@ -12,46 +15,56 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textview_item_name"
+            android:id="@+id/textview_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
             android:text="@string/name"
-            android:textColor="@color/navy_blue"
-            app:layout_constraintStart_toEndOf="@+id/imageview_item_avatar"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageview_item_avatar"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:contentDescription="@string/avatar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/ic_profile" />
-
         <TextView
-            android:id="@+id/textview_item_group"
+            android:id="@+id/textview_teacher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
-            android:text="@string/group"
-            android:textColor="@color/navy_blue"
-            app:layout_constraintStart_toEndOf="@+id/textview_item_name"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/teacher"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_name" />
 
         <TextView
-            android:id="@+id/textview_item_phone"
+            android:id="@+id/textview_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
-            android:text="@string/phone"
+            android:text="@string/type"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageview_item_avatar" />
+            app:layout_constraintTop_toBottomOf="@+id/textview_teacher" />
+
+        <TextView
+            android:id="@+id/textview_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/time"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_type" />
+
+        <TextView
+            android:id="@+id/textview_classroom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/classroom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_type" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

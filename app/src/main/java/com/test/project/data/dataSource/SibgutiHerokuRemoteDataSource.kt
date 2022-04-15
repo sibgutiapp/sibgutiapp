@@ -16,4 +16,8 @@ class SibgutiHerokuRemoteDataSource(
     suspend fun getNews() = safeApiCall {
         api.getNews()
     }
+
+    suspend fun getSchedule() = safeApiCall{
+        api.getSchedule()
+    }
 }

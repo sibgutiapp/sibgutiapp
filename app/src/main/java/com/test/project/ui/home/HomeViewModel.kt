@@ -31,7 +31,6 @@ class HomeViewModel(
                 is RequestResult.Success -> {
                     _newsState.emit(result.data)
                 }
-
                 is RequestResult.Error -> {
                     _error.emit(result.exception)
                 }
