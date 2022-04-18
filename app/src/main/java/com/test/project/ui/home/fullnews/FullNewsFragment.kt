@@ -5,14 +5,17 @@ import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavController
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.test.project.R
 import com.test.project.databinding.FullNewsFragmentBinding
 import com.test.project.domain.entity.News
+import com.test.project.ui.home.HomeNewsListAdapter
 import com.test.project.ui.home.HomeViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -30,6 +33,16 @@ class FullNewsFragment : Fragment(R.layout.full_news_fragment) {
         viewLifecycleOwner.lifecycleScope.launch {
             model.newsStateFlow.collect {
                 bindUi(it[newsIndex])
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED)
+            {
+                launch {
+                    model.newsStateFlow.collect {
+                        adapterFullNewsList.setUpdatedData(it)
+                    }
+                }
             }
         }
     }
@@ -53,8 +66,18 @@ class FullNewsFragment : Fragment(R.layout.full_news_fragment) {
                 layoutManager = LinearLayoutManager(
                     requireContext(),
                     LinearLayoutManager.HORIZONTAL,
-                    false
-                )
+                    false)
+                adapterFullNewsList.setOnItemClickListener(object :
+                    FullNewsListAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        val bundle = Bundle()
+                        bundle.putInt("position", position)
+                        findNavController().navigate(
+                            R.id.action_fullNewsFragment_self,
+                            bundle
+                        )
+                    }
+                })
             }
         }
     }

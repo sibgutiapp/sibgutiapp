@@ -27,6 +27,10 @@
             android:name="@string/position"
             android:defaultValue="-1"
         />
+        <action
+            android:id="@+id/action_fullNewsFragment_self"
+            app:destination="@id/fullNewsFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/scheduleFragment"
