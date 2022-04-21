@@ -42,7 +42,13 @@ class NavigationActivity : AppCompatActivity() {
                 else -> hideBottomNavigationMenu()
             }
         }
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.homeFragment,
+                R.id.profileFragment,
+                R.id.scheduleFragment
+            )
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNavigationMenu.setupWithNavController(navController)
     }
