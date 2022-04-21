@@ -13,8 +13,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.test.project.databinding.ActivityNavigationBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class NavigationActivity : AppCompatActivity() {
 
     private val binding: ActivityNavigationBinding by viewBinding()

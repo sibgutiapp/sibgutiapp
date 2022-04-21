@@ -13,7 +13,7 @@ import com.test.project.ui.schedule.ScheduleViewModel
 class ScheduleTabFragment : Fragment(R.layout.schedule_tab_fragment) {
 
     private val binding: ScheduleTabFragmentBinding by viewBinding()
-    private val model: ScheduleViewModel by activityViewModels()
+    private val model: ScheduleViewModel by activityViewModels<ScheduleViewModel>()
     private val adapterScheduleTabRecyclerViewAdapter: ScheduleTabRecyclerViewAdapter =
         ScheduleTabRecyclerViewAdapter()
 

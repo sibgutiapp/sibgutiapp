@@ -1,8 +1,11 @@
 package com.test.project.data.dataSource
 
 import com.test.project.data.remote.network.safeApiCall
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class SibgutiHerokuRemoteDataSource(
+@Singleton
+class SibgutiHerokuRemoteDataSource @Inject constructor(
     private val api: ISibgutiHerokuService
 ) {
     suspend fun getProfileMy() = safeApiCall {
