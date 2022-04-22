@@ -6,15 +6,13 @@ import com.test.project.data.remote.network.NetworkErrors
 import com.test.project.domain.RequestResult
 import com.test.project.domain.entity.News
 import com.test.project.domain.repo.INewsRepo
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.test.project.domain.repo.IProfileRepo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class HomeViewModel @Inject constructor(
+class HomeViewModel(
     private val newsRepo: INewsRepo
     ) : ViewModel() {
 
