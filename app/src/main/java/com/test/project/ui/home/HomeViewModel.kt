@@ -6,7 +6,6 @@ import com.test.project.data.remote.network.NetworkErrors
 import com.test.project.domain.RequestResult
 import com.test.project.domain.entity.News
 import com.test.project.domain.repo.INewsRepo
-import com.test.project.domain.repo.IProfileRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
