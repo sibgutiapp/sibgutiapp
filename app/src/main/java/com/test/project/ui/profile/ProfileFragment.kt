@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import com.test.project.R
 import android.viewbinding.library.fragment.viewBinding
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -16,15 +15,14 @@ import coil.transform.CircleCropTransformation
 import com.test.project.databinding.ProfileFragmentBinding
 
 import com.test.project.domain.entity.ProfileMy
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.profile_fragment) {
 
     private val viewBinding: ProfileFragmentBinding by viewBinding()
-    private val model: ProfileViewModel by viewModels()
+    private val model: ProfileViewModel by viewModel()
     private val adapterProfileRecyclerViewFriendsList: ProfileRecyclerViewFriendsListAdapter =
         ProfileRecyclerViewFriendsListAdapter()
 

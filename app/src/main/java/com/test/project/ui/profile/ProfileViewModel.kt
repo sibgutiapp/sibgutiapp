@@ -7,15 +7,12 @@ import com.test.project.domain.RequestResult
 import com.test.project.domain.entity.Friend
 import com.test.project.domain.entity.ProfileMy
 import com.test.project.domain.repo.IProfileRepo
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class ProfileViewModel @Inject constructor(
+class ProfileViewModel(
     private val profileRepo: IProfileRepo
 ) : ViewModel() {
 

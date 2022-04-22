@@ -5,7 +5,6 @@ import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -17,15 +16,14 @@ import com.test.project.R
 import com.test.project.databinding.FullNewsFragmentBinding
 import com.test.project.domain.entity.News
 import com.test.project.ui.home.HomeViewModel
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class FullNewsFragment : Fragment(R.layout.full_news_fragment) {
 
     private val binding: FullNewsFragmentBinding by viewBinding()
-    private val model: HomeViewModel by viewModels()
+    private val model: HomeViewModel by viewModel()
     private val adapterFullNewsList: FullNewsListAdapter = FullNewsListAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

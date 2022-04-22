@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -12,16 +11,16 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.test.project.R
 import com.test.project.databinding.HomeFragmentBinding
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
+
 class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private val viewBinding: HomeFragmentBinding by viewBinding()
     private val adapterNews: HomeNewsListAdapter = HomeNewsListAdapter()
-    private val model: HomeViewModel by viewModels()
+    private val model: HomeViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
