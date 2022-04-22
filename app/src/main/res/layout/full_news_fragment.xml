@@ -59,6 +59,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:text="@string/name"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="@+id/textview_item_date"
             app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintTop_toBottomOf="@+id/imageview_author_avatar" />
