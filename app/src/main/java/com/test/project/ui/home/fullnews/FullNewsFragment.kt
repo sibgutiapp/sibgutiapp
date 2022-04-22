@@ -15,7 +15,6 @@ import coil.transform.CircleCropTransformation
 import com.test.project.R
 import com.test.project.databinding.FullNewsFragmentBinding
 import com.test.project.domain.entity.News
-import com.test.project.ui.home.HomeNewsListAdapter
 import com.test.project.ui.home.HomeViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

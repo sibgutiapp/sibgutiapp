@@ -3,6 +3,7 @@ package com.test.project
 import android.os.Bundle
 import android.view.View
 import android.viewbinding.library.activity.viewBinding
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.findNavController
@@ -28,13 +29,26 @@ class NavigationActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.homeFragment -> showBottomNavigationMenu()
+                R.id.loginFragment -> {
+                    hideAppBar()
+                    hideBottomNavigationMenu()
+                }
+                R.id.homeFragment -> {
+                    showBottomNavigationMenu()
+                    showAppBar()
+                }
                 R.id.profileFragment -> showBottomNavigationMenu()
                 R.id.scheduleFragment -> showBottomNavigationMenu()
                 else -> hideBottomNavigationMenu()
             }
         }
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.homeFragment,
+                R.id.profileFragment,
+                R.id.scheduleFragment
+            )
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNavigationMenu.setupWithNavController(navController)
     }
@@ -51,6 +65,14 @@ class NavigationActivity : AppCompatActivity() {
 
     private fun hideBottomNavigationMenu() {
         binding.bottomNavigationMenu.visibility = View.GONE
+    }
+
+    private fun hideAppBar() {
+        supportActionBar?.hide()
+    }
+
+    private fun showAppBar() {
+        supportActionBar?.show()
     }
 }
 

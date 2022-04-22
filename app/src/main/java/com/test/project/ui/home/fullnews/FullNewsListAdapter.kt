@@ -5,11 +5,8 @@ import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import com.test.project.databinding.FullNewsFragmentBinding
 import com.test.project.databinding.ItemFullNewsListBinding
 import com.test.project.domain.entity.News
-import com.test.project.ui.home.HomeNewsListAdapter
 
 class FullNewsListAdapter :
     RecyclerView.Adapter<FullNewsListAdapter.ViewHolder>() {

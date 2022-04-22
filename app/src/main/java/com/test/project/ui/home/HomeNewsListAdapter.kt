@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import coil.transform.CircleCropTransformation
-import com.test.project.R
 import com.test.project.databinding.ItemHomeNewsListBinding
 import com.test.project.domain.entity.News
 
