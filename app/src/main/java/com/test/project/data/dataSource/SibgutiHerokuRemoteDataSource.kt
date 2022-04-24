@@ -1,5 +1,8 @@
 package com.test.project.data.dataSource
 
+import com.test.project.data.dataSource.database.NewsDatabase
+import com.test.project.data.remote.entity.toApiNewsDatabase
+import com.test.project.data.remote.entity.toNews
 import com.test.project.data.remote.network.safeApiCall
 
 class SibgutiHerokuRemoteDataSource(
@@ -17,7 +20,8 @@ class SibgutiHerokuRemoteDataSource(
         api.getNews()
     }
 
-    suspend fun getSchedule() = safeApiCall{
+
+    suspend fun getSchedule() = safeApiCall {
         api.getSchedule()
     }
 }

@@ -2,6 +2,8 @@ package com.test.project.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.test.project.App
+import com.test.project.data.dataSource.database.NewsDatabase
 import com.test.project.data.remote.network.NetworkErrors
 import com.test.project.domain.RequestResult
 import com.test.project.domain.entity.News
@@ -32,9 +34,16 @@ class HomeViewModel(
                     _newsState.emit(result.data)
                 }
                 is RequestResult.Error -> {
+                    getNewsFromDatabase()
                     _error.emit(result.exception)
                 }
             }
+        }
+    }
+
+    private fun getNewsFromDatabase() {
+        viewModelScope.launch {
+            _newsState.emit(newsRepo.getNewsFromDatabase())
         }
     }
 }

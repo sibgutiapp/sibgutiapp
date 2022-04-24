@@ -5,4 +5,5 @@ import com.test.project.domain.entity.News
 
 interface INewsRepo {
     suspend fun getNews(): RequestResult<List<News>>
+    suspend fun getNewsFromDatabase(): List<News>
 }
