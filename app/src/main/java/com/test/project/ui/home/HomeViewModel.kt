@@ -2,13 +2,10 @@ package com.test.project.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.test.project.App
-import com.test.project.data.dataSource.database.NewsDatabase
 import com.test.project.data.remote.network.NetworkErrors
 import com.test.project.domain.RequestResult
 import com.test.project.domain.entity.News
 import com.test.project.domain.repo.INewsRepo
-import com.test.project.domain.repo.IProfileRepo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.filterNotNull
@@ -16,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val newsRepo: INewsRepo
-    ) : ViewModel() {
+) : ViewModel() {
 
     private val _newsState = MutableStateFlow<List<News>?>(null)
     val newsStateFlow = _newsState.asStateFlow().filterNotNull()

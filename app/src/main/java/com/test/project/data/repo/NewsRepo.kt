@@ -1,21 +1,18 @@
 package com.test.project.data.repo
 
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.test.project.data.dataSource.SibgutiHerokuRemoteDataSource
 import com.test.project.data.dataSource.database.NewsDatabase
-import com.test.project.data.remote.entity.ApiNewsDatabase
 import com.test.project.data.remote.entity.toApiNewsDatabase
 import com.test.project.data.remote.entity.toNews
 import com.test.project.domain.RequestResult
 import com.test.project.domain.entity.News
 import com.test.project.domain.repo.INewsRepo
-import kotlinx.coroutines.CoroutineScope
 
 class NewsRepo(
     private val dataSource: SibgutiHerokuRemoteDataSource,
     private val database: NewsDatabase
-) :
-    INewsRepo {
+) : INewsRepo {
+
     override suspend fun getNews(): RequestResult<List<News>> {
         return when (val result = dataSource.getNews()) {
 
