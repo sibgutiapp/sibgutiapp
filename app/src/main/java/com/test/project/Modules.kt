@@ -1,6 +1,7 @@
 package com.test.project
 
 import com.test.project.data.dataSource.SibgutiHerokuRemoteDataSource
+import com.test.project.data.dataSource.database.NewsDatabase
 import com.test.project.data.dataSource.provideSibgutiHerokuService
 import com.test.project.data.remote.network.INetwork
 import com.test.project.data.remote.network.Network
@@ -20,6 +21,7 @@ val networkModule = module {
     single { SupportInterceptor() }
     single<INetwork> { Network(get()) }
     single { provideSibgutiHerokuService(get()) }
+    single { NewsDatabase.getDatabase(get()) }
 }
 
 val prefModule = module {
@@ -31,7 +33,7 @@ val remoteModule = module {
 
 val repositoryModule = module {
     single<IProfileRepo> { ProfileRepo(get()) }
-    single<INewsRepo> { NewsRepo(get()) }
+    single<INewsRepo> { NewsRepo(get(), get()) }
 }
 
 val viewModelModules = module {
