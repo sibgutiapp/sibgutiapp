@@ -10,6 +10,7 @@ import com.test.project.data.repo.ProfileRepo
 import com.test.project.domain.repo.INewsRepo
 import com.test.project.domain.repo.IProfileRepo
 import com.test.project.ui.home.HomeViewModel
+import com.test.project.ui.login.LoginViewModel
 import com.test.project.ui.profile.ProfileViewModel
 import com.test.project.ui.schedule.ScheduleViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -38,6 +39,7 @@ val viewModelModules = module {
     viewModel { ProfileViewModel(get()) }
     viewModel { HomeViewModel(get()) }
     viewModel { ScheduleViewModel() }
+    viewModel { LoginViewModel() }
 }
 
 fun getModules(): List<Module> {
