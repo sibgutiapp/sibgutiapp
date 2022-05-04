@@ -54,7 +54,9 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     private fun bindUi() {
         with(binding) {
             buttonLogin.setOnClickListener {
-//                login()
+                login()
+            }
+            googleSignInButton.setOnClickListener {
                 signInWithGoogle()
             }
             textinputedittextPassword.addTextChangedListener {
