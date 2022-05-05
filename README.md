@@ -24,3 +24,4 @@ All contributions are welcome! Feel free to jump to the issues and pick one for 
 * [anton-bondarenko916](https://github.com/anton-bondarenko916)
 * [verssy](https://github.com/verssy)
 * [thekravchan](https://github.com/thekravchan)
+* [Kimot0](https://github.com/Kimot0)
