@@ -6,6 +6,7 @@ import com.test.project.data.remote.entity.ApiProfileMy
 import com.test.project.data.remote.entity.ApiUser
 import com.test.project.data.remote.network.INetwork
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 
 fun provideSibgutiHerokuService(network: INetwork): ISibgutiHerokuService =
@@ -26,4 +27,7 @@ interface ISibgutiHerokuService {
 
     @GET("schedule")
     suspend fun getSchedule(): List<List<ApiLesson>>
+
+    @GET("profile/{id}")
+    suspend fun getProfileById(@Path("id") id: Int): ApiUser
 }

@@ -29,6 +29,22 @@ class ProfileRepo(private val dataSource: SibgutiHerokuRemoteDataSource) :
         }
     }
 
+    override suspend fun getFriendProfileById(id: Int): RequestResult<Friend> {
+        return when (val result = dataSource.getProfileById(id)) {
+
+            is RequestResult.Success -> {
+                RequestResult.Success(
+                    result.data.toFriend()
+                )
+            }
+            is RequestResult.Error -> {
+                RequestResult.Error(
+                    result.exception
+                )
+            }
+        }
+    }
+
     override suspend fun getProfileMy(): RequestResult<ProfileMy> {
         return when (val result = dataSource.getProfileMy()) {
             is RequestResult.Success -> {

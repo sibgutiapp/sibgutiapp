@@ -24,4 +24,7 @@
     <string name="classroom">000(К.0)</string>
     <string name="password">Password</string>
     <string name="favorite">В избранное</string>
+    <string name="send_message">Написать сообщение</string>
+    <string name="delete_friend">Удалить из друзей</string>
+    <string name="call">Позвонить</string>
 </resources>

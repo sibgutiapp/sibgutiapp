@@ -4,6 +4,7 @@ import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.test.project.R
@@ -14,6 +15,7 @@ class HomeNewsListAdapter :
     RecyclerView.Adapter<HomeNewsListAdapter.ViewHolder>() {
 
     lateinit var listener: OnItemClickListener
+    lateinit var diff : HomeDIffUtils
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)
@@ -29,9 +31,10 @@ class HomeNewsListAdapter :
     var favoriteNews = mutableListOf<Int>()
 
     fun setUpdatedData(dataList: List<News>) {
-        this.dataList.clear()
-        this.dataList.addAll(dataList)
-        notifyDataSetChanged()
+        diff = HomeDIffUtils(this.dataList,dataList)
+        val diffResult : DiffUtil.DiffResult = DiffUtil.calculateDiff(diff)
+        this.dataList = dataList.toMutableList()
+        diffResult.dispatchUpdatesTo(this)
     }
 
     fun setUpdateFavoriteList(list: List<Int>) {
