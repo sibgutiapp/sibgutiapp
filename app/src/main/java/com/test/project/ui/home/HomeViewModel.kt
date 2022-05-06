@@ -1,7 +1,9 @@
 package com.test.project.ui.home
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.test.project.data.remote.entity.FavoriteNews
 import com.test.project.data.remote.network.NetworkErrors
 import com.test.project.domain.RequestResult
 import com.test.project.domain.entity.News
@@ -18,10 +20,14 @@ class HomeViewModel(
     private val _newsState = MutableStateFlow<List<News>?>(null)
     val newsStateFlow = _newsState.asStateFlow().filterNotNull()
 
+    private var _newsFavoriteState = MutableLiveData<List<FavoriteNews>>()
+    val newsFavoriteStateFlow = _newsFavoriteState
+
     private val _error = MutableStateFlow<NetworkErrors?>(null)
 
     init {
         getNews()
+        getFavoriteNewsFromDatabase()
     }
 
     fun getNews() {
@@ -38,9 +44,27 @@ class HomeViewModel(
         }
     }
 
+    fun getFavoriteNewsFromDatabase() {
+        viewModelScope.launch {
+            _newsFavoriteState.value = newsRepo.getFavoriteNewsFromDatabase()
+        }
+    }
+
     private fun getNewsFromDatabase() {
         viewModelScope.launch {
             _newsState.emit(newsRepo.getNewsFromDatabase())
+        }
+    }
+
+    fun addToFavoriteNews(favoriteNews: FavoriteNews) {
+        viewModelScope.launch {
+            newsRepo.insertToFavorite(favoriteNews)
+        }
+    }
+
+    fun deleteFromFavoriteNews(favoriteNews: FavoriteNews) {
+        viewModelScope.launch {
+            newsRepo.deleteFromFavoriteById(favoriteNews.id)
         }
     }
 }

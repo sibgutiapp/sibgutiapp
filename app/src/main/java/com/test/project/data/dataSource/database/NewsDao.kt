@@ -1,10 +1,8 @@
 package com.test.project.data.dataSource.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.test.project.data.remote.entity.ApiNewsDatabase
+import com.test.project.data.remote.entity.FavoriteNews
 
 @Dao
 interface NewsDao {
@@ -16,6 +14,15 @@ interface NewsDao {
 
     @Query("DELETE FROM news_hash")
     suspend fun deleteAll()
+
+    @Query("DELETE FROM favorite_news WHERE id = :id")
+    suspend fun deleteFromFavoriteById(id: Int): Int
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun  insertIntoFavorite(favoriteNews: FavoriteNews)
+
+    @Query("SELECT * FROM favorite_news")
+    suspend fun getAllFromFavorite(): List<FavoriteNews>
 
     @Query("SELECT * FROM news_hash")
     suspend fun getAll(): List<ApiNewsDatabase>

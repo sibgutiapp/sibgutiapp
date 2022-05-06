@@ -2,6 +2,7 @@ package com.test.project.data.repo
 
 import com.test.project.data.dataSource.SibgutiHerokuRemoteDataSource
 import com.test.project.data.dataSource.database.NewsDatabase
+import com.test.project.data.remote.entity.FavoriteNews
 import com.test.project.data.remote.entity.toApiNewsDatabase
 import com.test.project.data.remote.entity.toNews
 import com.test.project.domain.RequestResult
@@ -41,5 +42,17 @@ class NewsRepo(
         return database.newsDao().getAll().map {
             it.toNews()
         }
+    }
+
+    override suspend fun insertToFavorite(favoriteNews: FavoriteNews) {
+        database.newsDao().insertIntoFavorite(favoriteNews)
+    }
+
+    override suspend fun deleteFromFavoriteById(id: Int) {
+        database.newsDao().deleteFromFavoriteById(id)
+    }
+
+    override suspend fun getFavoriteNewsFromDatabase(): List<FavoriteNews> {
+        return database.newsDao().getAllFromFavorite()
     }
 }
