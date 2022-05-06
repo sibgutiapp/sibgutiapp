@@ -18,7 +18,11 @@
         android:id="@+id/profileFragment"
         android:name="com.test.project.ui.profile.ProfileFragment"
         android:label="Профиль"
-        tools:layout="@layout/profile_fragment" />
+        tools:layout="@layout/profile_fragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_friendPageFragment"
+            app:destination="@id/friendPageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fullNewsFragment"
         android:name="com.test.project.ui.home.fullnews.FullNewsFragment"
@@ -48,4 +52,8 @@
             app:popUpToInclusive="true"
             />
     </fragment>
+    <fragment
+        android:id="@+id/friendPageFragment"
+        android:name="com.test.project.ui.friend_page.FriendPageFragment"
+        android:label="Профиль друга" />
 </navigation>

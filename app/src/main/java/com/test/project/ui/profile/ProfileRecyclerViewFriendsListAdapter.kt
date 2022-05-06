@@ -11,6 +11,16 @@ import com.test.project.domain.entity.Friend
 class ProfileRecyclerViewFriendsListAdapter :
     RecyclerView.Adapter<ProfileRecyclerViewFriendsListAdapter.ViewHolder>() {
 
+    lateinit var listener: OnItemClickListener
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
+
     private var dataList: MutableList<Friend> = mutableListOf()
 
     fun setUpdatedData(dataList: List<Friend>) {
@@ -19,7 +29,7 @@ class ProfileRecyclerViewFriendsListAdapter :
         notifyDataSetChanged()
     }
 
-    class ViewHolder(private val binding: ItemProfileFriendsListBinding) :
+    inner class ViewHolder(private val binding: ItemProfileFriendsListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Friend) {
             with(binding) {
@@ -30,6 +40,9 @@ class ProfileRecyclerViewFriendsListAdapter :
                     crossfade(true)
                     transformations(CircleCropTransformation())
                 }
+            }
+            itemView.setOnClickListener {
+                listener.onItemClick(data.id)
             }
         }
     }

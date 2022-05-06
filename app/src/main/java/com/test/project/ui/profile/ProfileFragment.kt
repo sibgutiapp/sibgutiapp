@@ -9,6 +9,7 @@ import android.viewbinding.library.fragment.viewBinding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import coil.transform.CircleCropTransformation
@@ -65,6 +66,19 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
                 val managerRecyclerViewFriendsListAdapter = LinearLayoutManager(context)
                 layoutManager = managerRecyclerViewFriendsListAdapter
                 setHasFixedSize(true)
+
+                adapterProfileRecyclerViewFriendsList.setOnItemClickListener(object :
+                ProfileRecyclerViewFriendsListAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        val bundle = Bundle()
+                        bundle.putInt("friend_id", position)
+                        findNavController().navigate(
+                            R.id.action_profileFragment_to_friendPageFragment,
+                            bundle
+                        )
+                    }
+
+                })
             }
         }
     }
