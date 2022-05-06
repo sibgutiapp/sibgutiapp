@@ -20,4 +20,8 @@ class SibgutiHerokuRemoteDataSource(
     suspend fun getSchedule() = safeApiCall {
         api.getSchedule()
     }
+
+    suspend fun getProfileById(id: Int) = safeApiCall {
+        api.getProfileById(id)
+    }
 }

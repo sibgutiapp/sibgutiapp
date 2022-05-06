@@ -10,6 +10,7 @@ import com.test.project.data.repo.NewsRepo
 import com.test.project.data.repo.ProfileRepo
 import com.test.project.domain.repo.INewsRepo
 import com.test.project.domain.repo.IProfileRepo
+import com.test.project.ui.friend_page.FriendPageViewModel
 import com.test.project.ui.home.HomeViewModel
 import com.test.project.ui.profile.ProfileViewModel
 import com.test.project.ui.schedule.ScheduleViewModel
@@ -40,6 +41,7 @@ val viewModelModules = module {
     viewModel { ProfileViewModel(get()) }
     viewModel { HomeViewModel(get()) }
     viewModel { ScheduleViewModel() }
+    viewModel { FriendPageViewModel(get()) }
 }
 
 fun getModules(): List<Module> {
