@@ -28,7 +28,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             val account = GoogleSignIn.getSignedInAccountFromIntent(it.data).result
             if (account != null) {
-                model.firebaseAuthWithGoogle(account.idToken.toString())
+                model.authWithGoogle(account.idToken.toString())
             }
         }
     }
@@ -76,6 +76,8 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
 
     private fun signInWithGoogle() {
-        launcher.launch(model.getClient(requireActivity()).signInIntent)
+        launcher.launch(
+            model.signInWithGoogle(requireActivity())
+        )
     }
 }
