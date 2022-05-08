@@ -1,5 +1,6 @@
 package com.test.project.ui.login
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.test.project.R
 import com.test.project.databinding.LoginFragmentBinding
 import kotlinx.coroutines.flow.collect
@@ -21,14 +28,14 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
     private lateinit var launcher: ActivityResultLauncher<Intent>
     private val binding: LoginFragmentBinding by viewBinding()
-    private val model: LoginViewModel by viewModel()
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             val account = GoogleSignIn.getSignedInAccountFromIntent(it.data).result
             if (account != null) {
-                model.authWithGoogle(account.idToken.toString())
+                firebaseAuthWithGoogle(account.idToken.toString())
             }
         }
     }
@@ -36,19 +43,6 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindUi()
-        viewLifecycleOwner.lifecycleScope.launch {
-            model.loginStateFlow.collect {
-                if (it.success) {
-                    binding.textinputlayoutPassword.error = it.errorMessage
-                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                } else {
-                    with(binding) {
-                        textinputedittextPassword.text?.clear()
-                        textinputlayoutPassword.error = it.errorMessage
-                    }
-                }
-            }
-        }
     }
 
     private fun bindUi() {
@@ -67,17 +61,52 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
     private fun login() {
         with(binding) {
-            model.login(
-                textinputedittextLogin.text.toString(),
-                textinputedittextPassword.text.toString()
-            )
+            val email = textinputedittextLogin.text.toString()
+            val password = textinputedittextPassword.text.toString()
+            auth = FirebaseAuth.getInstance()
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener {
+                        handleAuthResult(it)
+                    }
+            }
         }
     }
 
+    private fun getClient(activity: Activity): GoogleSignInClient {
+        val gso = GoogleSignInOptions
+            .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken("501834887092-jucml7b8mqojet85k9vi04qgmrdvf69h.apps.googleusercontent.com")
+            .requestEmail()
+            .build()
+        return GoogleSignIn.getClient(activity, gso)
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        auth = FirebaseAuth.getInstance()
+        auth.signInWithCredential(GoogleAuthProvider.getCredential(idToken, null))
+            .addOnCompleteListener {
+                handleAuthResult(it)
+            }
+    }
 
     private fun signInWithGoogle() {
         launcher.launch(
-            model.signInWithGoogle(requireActivity())
+            getClient(requireActivity()).signInIntent
         )
+    }
+
+    private fun handleAuthResult(result: Task<AuthResult>) {
+        with(binding) {
+            if (result.isSuccessful) {
+                textinputlayoutPassword.error = ""
+                findNavController().navigate(
+                    R.id.action_loginFragment_to_homeFragment
+                )
+            } else {
+                textinputedittextPassword.text?.clear()
+                textinputlayoutPassword.error = result.exception?.message.toString()
+            }
+        }
     }
 }
