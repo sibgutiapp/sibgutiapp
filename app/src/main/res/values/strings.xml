@@ -27,4 +27,5 @@
     <string name="send_message">Написать сообщение</string>
     <string name="delete_friend">Удалить из друзей</string>
     <string name="call">Позвонить</string>
+    <string name="register">Регистрация</string>
 </resources>
