@@ -27,4 +27,5 @@
     <string name="send_message">Написать сообщение</string>
     <string name="delete_friend">Удалить из друзей</string>
     <string name="call">Позвонить</string>
+    <string name="SERVER_CLIENT_ID">501834887092-jucml7b8mqojet85k9vi04qgmrdvf69h.apps.googleusercontent.com</string>
 </resources>
