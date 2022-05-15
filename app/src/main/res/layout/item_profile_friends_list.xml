@@ -30,7 +30,8 @@
             android:contentDescription="@string/avatar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/ic_profile" />
+            tools:srcCompat="@drawable/ic_profile"
+            android:background="@drawable/border_for_avatar"/>
 
         <TextView
             android:id="@+id/textview_item_group"

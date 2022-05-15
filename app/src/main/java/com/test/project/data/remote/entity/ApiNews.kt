@@ -28,3 +28,12 @@ fun ApiNews.toNews() = News(
     id = this.id ?: -1,
     title = this.title ?: ""
 )
+
+fun ApiNews.toApiNewsDatabase() = ApiNewsDatabase(
+    dateTime = this.dateTime ?: "",
+    author = this.author?.fullName ?: "",
+    imageUrl = this.imageUrl ?: "",
+    description = this.description ?: "",
+    id = this.id ?: -1,
+    title = this.title ?: ""
+)
