@@ -29,14 +29,12 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     private lateinit var launcher: ActivityResultLauncher<Intent>
     private val binding: LoginFragmentBinding by viewBinding()
     private lateinit var auth: FirebaseAuth
-    private val SERVER_CLIENT_ID =
-        "501834887092-jucml7b8mqojet85k9vi04qgmrdvf69h.apps.googleusercontent.com"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             val account = GoogleSignIn.getSignedInAccountFromIntent(it.data).result
-            if (account != null) {
+            account?.let {
                 firebaseAuthWithGoogle(account.idToken.toString())
             }
         }
@@ -78,7 +76,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     private fun getClient(activity: Activity): GoogleSignInClient {
         val gso = GoogleSignInOptions
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(SERVER_CLIENT_ID)
+            .requestIdToken(getString(R.string.SERVER_CLIENT_ID))
             .requestEmail()
             .build()
         return GoogleSignIn.getClient(activity, gso)
