@@ -1,6 +1,7 @@
 package com.test.project.ui.login
 
-import android.app.Activity
+import android.net.Uri
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,7 +10,6 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -20,9 +20,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.test.project.R
 import com.test.project.databinding.LoginFragmentBinding
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment(R.layout.login_fragment) {
 
@@ -56,6 +53,13 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
             textinputedittextPassword.addTextChangedListener {
                 textinputlayoutPassword.error = ""
             }
+            with(buttonRegister) {
+                setOnClickListener {
+                    register()
+                }
+                stateListAnimator = null
+                setBackgroundColor(requireContext().getColor(R.color.white))
+            }
         }
     }
 
@@ -73,13 +77,13 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         }
     }
 
-    private fun getClient(activity: Activity): GoogleSignInClient {
+    private fun getClient(context: Context): GoogleSignInClient {
         val gso = GoogleSignInOptions
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.SERVER_CLIENT_ID))
             .requestEmail()
             .build()
-        return GoogleSignIn.getClient(activity, gso)
+        return GoogleSignIn.getClient(context, gso)
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
@@ -92,7 +96,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
     private fun signInWithGoogle() {
         launcher.launch(
-            getClient(requireActivity()).signInIntent
+            getClient(requireContext()).signInIntent
         )
     }
 
@@ -108,5 +112,18 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
                 textinputlayoutPassword.error = result.exception?.message.toString()
             }
         }
+        with(binding.buttonRegister) {
+            setOnClickListener {
+                register()
+            }
+            stateListAnimator = null
+            setBackgroundColor(requireContext().getColor(R.color.white))
+        }
+    }
+
+    private fun register() {
+        val url = "https://sibsutis.ru/join"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        requireActivity().startActivity(intent)
     }
 }
