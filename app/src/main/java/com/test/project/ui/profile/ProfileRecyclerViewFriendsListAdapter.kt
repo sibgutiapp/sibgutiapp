@@ -2,9 +2,11 @@ package com.test.project.ui.profile
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.test.project.R
 import com.test.project.databinding.ItemProfileFriendsListBinding
 import com.test.project.domain.entity.Friend
 
@@ -36,6 +38,11 @@ class ProfileRecyclerViewFriendsListAdapter :
                 textviewItemGroup.text = data.group
                 textviewItemName.text = data.fullName
                 textviewItemPhone.text = data.phone
+                cardviewFriendsCard
+                    .startAnimation(
+                        AnimationUtils.loadAnimation(
+                            itemView.context,
+                            R.anim.animation_recyclerview))
                 imageviewItemAvatar.load(data.avatarUrl) {
                     crossfade(true)
                     transformations(CircleCropTransformation())
