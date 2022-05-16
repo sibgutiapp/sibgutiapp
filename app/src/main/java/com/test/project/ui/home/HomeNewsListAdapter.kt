@@ -3,6 +3,7 @@ package com.test.project.ui.home
 import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -54,6 +55,11 @@ class HomeNewsListAdapter :
                 }
                 textviewItemAuthor.text = data.author?.fullName ?: ""
                 textviewItemDate.text = data.dateTime
+                cardviewNewsCard
+                    .startAnimation(
+                        AnimationUtils
+                            .loadAnimation(itemView.context,
+                            R.anim.animation_recyclerview))
 
                 if (favoriteNews.contains(data.id)) {
                     addToFavoriteButton.setImageResource(R.drawable.ic_baseline_favorite_selected)

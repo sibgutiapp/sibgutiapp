@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:strokeColor="@color/gray"
-    app:strokeWidth="0.05dp">
+    app:strokeWidth="0.05dp"
+    android:id="@+id/cardview_friends_card">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
