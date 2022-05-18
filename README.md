@@ -18,7 +18,6 @@ Soon
 All contributions are welcome! Feel free to jump to the issues and pick one for yourself! Please write a comment inside of the issue before you start working.
 
 ## Contributors 👏🏻
-* [tkrest](https://github.com/tkrest)
 * [vfadin](https://github.com/vfadin)
 * [EgorBauer](https://github.com/EgorBauer)
 * [anton-bondarenko916](https://github.com/anton-bondarenko916)
